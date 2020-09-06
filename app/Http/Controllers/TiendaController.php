@@ -23,7 +23,8 @@ class TiendaController extends Controller
 
   public function showCarrito(){
     $prods =  \Session::get('cart');
-    return view('tienda.carrito', compact('prods'));
+    $total = $this->total();
+    return view('tienda.carrito', compact('prods', 'total'));
   }
 
   public function addProducto($pro){
@@ -46,9 +47,27 @@ class TiendaController extends Controller
 
   public function actualizarCantidad($pro, $cant){
     $tien = \Session::get('cart');
-    $tien[$pro->id]->cantidad = $cantidad;
+    $tien[$pro->id]->cantidad = $cant;
     \Session::put('cart', $tien);
     return redirect()->route('showCarrito');
+  }
+
+  private function total(){
+    $tien = \Session::get('cart');
+    $total = 0;
+    foreach ($tien as $value) {
+      $total += $value->precio * $value->cantidad;
+    }
+
+    return $total;
+  }
+
+  public function checkout(){
+    $prods = \Session::get('cart');
+    $total = $this->total();
+    //dd($prods);
+
+     return view('tienda.checkout', compact('prods', 'total'));
   }
 
 

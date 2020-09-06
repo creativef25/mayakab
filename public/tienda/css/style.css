@@ -627,7 +627,7 @@ h1, h2, h3, h4, h5,
         margin: 2px 5px;
         background: rgba(0, 0, 0, 0.2); }
       .owl-slide-3 .owl-dots .owl-dot.active > span, .owl-slide .owl-dots .owl-dot.active > span, .owl-style .owl-dots .owl-dot.active > span {
-        background: #930077; }
+        background: #f8d224; }
 
 .owl-slide .owl-nav {
   display: none; }
@@ -1325,7 +1325,7 @@ h1, h2, h3, h4, h5,
         color: #000; }
     .wine_v_1 .wine-actions .price, .wine_h_1 .wine-actions .price {
       font-size: 20px;
-      color: #930077;
+      color: #f8d224;
       font-family: "Cinzel"; }
       .wine_v_1 .wine-actions .price del, .wine_h_1 .wine-actions .price del {
         color: #ccc; }
@@ -1335,12 +1335,12 @@ h1, h2, h3, h4, h5,
         font-size: 16px;
         color: #ffbd39; }
     .wine_v_1 .wine-actions .btn, .wine_h_1 .wine-actions .btn {
-      background: #930077;
+      background: #f8d224;
       color: #fff;
       padding: 10px 20px;
       border-radius: 0; }
       .wine_v_1 .wine-actions .btn:hover, .wine_h_1 .wine-actions .btn:hover {
-        background: #60004e;
+        background: #b89806;
         color: #fff; }
   .wine_v_1:hover .wine-actions, .wine_h_1:hover .wine-actions, .wine_v_1:focus .wine-actions, .wine_h_1:focus .wine-actions {
     opacity: 1;
@@ -1434,7 +1434,7 @@ h1, h2, h3, h4, h5,
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: #930077;
+    background: #f8d224;
     color: #fff;
     top: 0;
     -webkit-transition: .3s all ease;
@@ -1475,7 +1475,7 @@ h1, h2, h3, h4, h5,
     vertical-align: middle;
     color: #212529; }
   .site-blocks-table tbody tr:first-child td {
-    border-top: 1px solid #930077 !important; }
+    border-top: 1px solid #f8d224 !important; }
 
 .site-block-order-table th {
   border-top: none !important;

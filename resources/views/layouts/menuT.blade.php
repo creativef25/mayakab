@@ -23,11 +23,10 @@
         <div class="mx-auto">
           <nav class="site-navigation position-relative text-left" role="navigation">
             <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
-              <li class="active"><a href="index.html" class="nav-link text-left">Home</a></li>
-              <li><a href="about.html" class="nav-link text-left">About</a></li>
-              <li><a href="shop.html" class="nav-link text-left">Wines</a></li>
-              <li><a href="shop.html" class="nav-link text-left">Shop</a></li>
-              <li><a href="contact.html" class="nav-link text-left">Contact</a></li>
+              <li><a href="{{route('tienda')}}" class="nav-link text-left">Inicio</a></li>
+              <li><a href="about.html" class="nav-link text-left">Nosotros</a></li>
+              <li><a href="{{ route('showCarrito')}}" class="nav-link text-left">Tienda</a></li>
+              <li><a href="contact.html" class="nav-link text-left">Contacto</a></li>
             </ul>
           </nav>
         </div>

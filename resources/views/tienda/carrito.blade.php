@@ -42,9 +42,9 @@
                     </div>
                   </td>
                   <th>
-                    <a href="" class="btn btn-success btn-update-item" data-href="{{ route('actualizarCantidad', $value->id)}}" data-id="{{ $value->id}}">Actualizar </a>
+                    <button id="hola" class="btn btn-secondary btn-update-item" type="button" name="button" data-href="{{ route('actualizarCantidad', $value->id)}}" data-id="{{ $value->id}}">Actualizar</button>
                   </th>
-                  <th class="product-total" id="total">$ {{ number_format($value->precio * $value->cantidad)}}</th>
+                  <th class="product-total" id="total">$ {{ number_format($value->precio * $value->cantidad)}}.00</th>
                   <th>
                     <a href="{{ route('eliminarProducto', $value->id)}}" class="btn btn-primary height-auto btn-sm">X</a>
                   </th>
@@ -56,23 +56,64 @@
       </div>
     </div>
   </div>
-@endsection
-@push('scriptt')
+
+  <div class="site-section pt-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="row mb-5">
+            <div class="col-md-6">
+              <a href="{{ route('tienda')}}" class="btn btn-outline-primary btn-md btn-block">Continuar Comprando</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pl-5">
+          <div class="row justify-content-end">
+            <div class="col-md-7">
+              <div class="row">
+                <div class="col-md-12 text-right border-bottom mb-5">
+                  <h3 class="text-black h4 text-uppercase">Total</h3>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <span class="text-black">Subtotal</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <strong class="text-black">$ {{$total}}.00</strong>
+                </div>
+              </div>
+              <div class="row mb-5">
+                <div class="col-md-6">
+                  <span class="text-black">Total</span>
+                </div>
+                <div class="col-md-6 text-right">
+                  <strong class="text-black">$ {{$total}}.00</strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <a href="{{ route('checkout')}}" class="btn btn-primary btn-lg btn-bloc">Pagar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   <script type="text/javascript">
-  $(document).ready(function(){
-    $('.btn-update-item').on('click', function(e){
-      alert('hooa');
-      e.preventDefault();
+  $(".btn-update-item").click(function(e){
+    e.preventDefault();
 
-      var id = $(this).data('id');
-      var href = $(this).data('href');
-      var cantidad = $("#producto_"+id).val();
+    var id = $(this).data('id');
+    var href = $(this).data('href');
+    var cantidad = $("#producto_"+id).val();
 
-      window.location.href = href + "/" + cantidad;
-
-    });
+    window.location.href = href + "/" + cantidad;
   });
+
   </script>
 
-@endpush
+@endsection
