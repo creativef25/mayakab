@@ -24,9 +24,9 @@
           <nav class="site-navigation position-relative text-left" role="navigation">
             <ul class="site-menu main-menu js-clone-nav mx-auto d-none pl-0 d-lg-block border-none">
               <li><a href="{{route('tienda')}}" class="nav-link text-left">Inicio</a></li>
-              <li><a href="about.html" class="nav-link text-left">Nosotros</a></li>
+              <li><a href="{{route('nosotros')}}" class="nav-link text-left">Nosotros</a></li>
               <li><a href="{{ route('showCarrito')}}" class="nav-link text-left">Tienda</a></li>
-              <li><a href="contact.html" class="nav-link text-left">Contacto</a></li>
+              <li><a href="{{ route('contacto')}}" class="nav-link text-left">Contacto</a></li>
             </ul>
           </nav>
         </div>

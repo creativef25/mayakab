@@ -29,7 +29,11 @@
             <div class="form-group row">
               <div class="col-md-6">
                 <label for="estado" class="text-black">Estado <span class="text-danger">*</span> </label>
-                <input type="text" class="form-control" name="estado" value="">
+                <select class="form-control" name="estado" id="estado">
+                  <option value=""></option>
+
+                </select>
+                {{--}}<input type="text" class="form-control" name="estado" value="" id="hola">--}}
               </div>
               <div class="col-md-6">
                 <label for="cp" class="text-black">Codigo Postal <span class="text-danger">*</span></label>
@@ -72,6 +76,10 @@
                       <td class="text-black">$ {{$total}}.00</td>
                     </tr>
                     <tr>
+                      <td class="text-black font-weight-bold"><strong>Gasto de Envio</strong> </td>
+                      <td class="text-black"><strong id="envios">$ 0.00</strong> </td>
+                    </tr>
+                    <tr>
                       <td class="text-black font-weight-bold"><strong>Total</strong></td>
                       <td class="text-black font-weight-bold"><strong>$ {{$total}}.00</strong> </td>
                     </tr>
@@ -84,20 +92,36 @@
                 </div>
                 <div class="form-group">
                   <button class="btn btn-primary btn-lg btn-block" type="button" name="button">Comprar</button>
-
                 </div>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $.getJSON('https://api-sepomex.hckdrk.mx/query/get_estados', function(data){
+      var estados = data.response.estado;
+      var esta = $("#estado");
+
+      $.each(estados, function(index, value){
+        esta.append('<option value="'+value+'">' + value + '</option>');
+      });
+    });
+  });
+
+  $("#estado").change(function(){
+    var nombre = $(this).val();
+    if (nombre == "Ciudad de México") {
+      $("#envios").text("$ 70.00");
+    }else {
+      $("#envios").text("$ 175.00");
+    }
+  });
+
+  </script>
 @endsection

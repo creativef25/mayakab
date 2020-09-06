@@ -2080,7 +2080,7 @@ pre code {
 .form-control:focus {
     color: #495057;
     background-color: #fff;
-    border-color: #ff14d2;
+    border-color: #f8d224;
     outline: 0;
     -webkit-box-shadow: 0 0 0 0.2rem rgba(147, 0, 119, 0.25);
     box-shadow: 0 0 0 0.2rem rgba(147, 0, 119, 0.25)
@@ -9455,7 +9455,7 @@ a.bg-dark:focus, a.bg-dark:hover, button.bg-dark:focus, button.bg-dark:hover {
 }
 
 .text-primary {
-    color: #930077 !important
+    color: #f8d224 !important
 }
 
 a.text-primary:focus, a.text-primary:hover {

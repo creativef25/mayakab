@@ -34,3 +34,5 @@ Route::get('add/carrito/{producto}', 'TiendaController@addProducto')->name('addP
 Route::get('eliminar/producto/{producto}', 'TiendaController@eliminarProducto')->name('eliminarProducto');
 Route::get('actualizar/carrito/{producto?}/{cantidad?}', 'TiendaController@actualizarCantidad')->name('actualizarCantidad');
 Route::get('checkout', 'TiendaController@checkout')->name('checkout');
+Route::get('nosotros', 'TiendaController@nosotros')->name('nosotros');
+Route::get('contacto', 'TiendaController@contacto')->name('contacto');

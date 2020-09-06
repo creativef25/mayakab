@@ -70,5 +70,13 @@ class TiendaController extends Controller
      return view('tienda.checkout', compact('prods', 'total'));
   }
 
+  public function nosotros(){
+    return view('tienda.nosotros');
+  }
+
+  public function contacto(){
+    return view('tienda.contacto');
+  }
+
 
 }
