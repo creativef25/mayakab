@@ -78,5 +78,48 @@ class TiendaController extends Controller
     return view('tienda.contacto');
   }
 
+  public function guardarPedido(Request $re){
+
+    $nomComp = $re->nombre." ".$re->apellidos;
+    $direc = $re->direccion." Referencias: ".$re->referencia;
+    $esta = $re->estado;
+    $copo = $re->cp;
+    $correo = $re->correo;
+    $tel = $re->telefono;
+    $envio = $re->envio;
+    $tien = \Session::get('cart');
+    $fecha = date('Y-m-d H:i:s');
+
+    if (empty($re->file('imagen'))) {
+      $pago = "tarjeta";
+      dd($tien);
+    }else {
+      $pago = "deposito";
+      $archivo = $re->file('imagen');
+      $nombre_img = $archivo->getClientOriginalName();
+      \Storage::disk('local')->put($nombre_img, \File::get($archivo));
+    }
+
+    foreach ($tien as $value) {
+      DB::table('pedidos')->insert([
+                                    'nombre_completo' => $nomComp,
+                                    'direccion_envio' => $direc,
+                                    'estado' => $esta,
+                                    'cp' => $copo,
+                                    'correo_electronico' => $correo,
+                                    'telefono' => $tel,
+                                    'producto' => $value->nombre,
+                                    'cantidad' => $value->cantidad,
+                                    'costo_envio' => $envio,
+                                    'fecha' => $fecha,
+                                    'tipo_pago' => $pago,
+                                    'imagen' => $nombre_img
+                                  ]);
+    }
+
+    return redirect()->route('tienda');
+
+  }
+
 
 }

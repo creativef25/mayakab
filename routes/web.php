@@ -36,3 +36,4 @@ Route::get('actualizar/carrito/{producto?}/{cantidad?}', 'TiendaController@actua
 Route::get('checkout', 'TiendaController@checkout')->name('checkout');
 Route::get('nosotros', 'TiendaController@nosotros')->name('nosotros');
 Route::get('contacto', 'TiendaController@contacto')->name('contacto');
+Route::post('guardar-pedido', 'TiendaController@guardarPedido')->name('guardarPedido');

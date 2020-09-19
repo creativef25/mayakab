@@ -3,7 +3,9 @@
 
   <div class="site-section">
     <div class="container">
-      <div class="row">
+      <form class="" action="{{ route('guardarPedido')}}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
         <div class="col-md-6 mb-5 mb-md-0">
           <h2 class="h3 mb-3 text-black font-heading-serif">Detalles de Compra</h2>
           <div class="p-3 p-lg-5 border">
@@ -78,26 +80,58 @@
                     <tr>
                       <td class="text-black font-weight-bold"><strong>Gasto de Envio</strong> </td>
                       <td class="text-black"><strong id="envios">$ 0.00</strong> </td>
+                      <input type="hidden" name="envio" value="" id="env">
                     </tr>
                     <tr>
                       <td class="text-black font-weight-bold"><strong>Total</strong></td>
-                      <td class="text-black font-weight-bold"><strong>$ {{$total}}.00</strong> </td>
+                      <td class="text-black font-weight-bold"><strong id="precio">$ {{$total}}.00</strong> </td>
                     </tr>
                   </tbody>
                 </table>
                 <div class="border mb-3 p-3 rounded">
                   <h3 class="h6 mb-0">
-                    <a class="d-block" data-toggle="collapse" href="#" role="button" aria-expanded="false" aria-controls="collapsebank">Pago con Tarjeta</a>
+                    <a class="d-block" data-toggle="collapse" href="#pagoTarjeta" role="button" aria-expanded="false" aria-controls="pagoTarjeta">Pago con Tarjeta</a>
                   </h3>
+                  <div class="collapse" id="pagoTarjeta">
+                    <div class="py-2 pl-0">
+                      <p class="mb-0">Formulario Pago de Tarjeta</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="border mb-3 p-3 rounded">
+                  <h3 class="h6 mb-0">
+                    <a class="d-block" data-toggle="collapse" href="#pagoFicha" role="button" aria-expanded="false" aria-controls="pagoFicha">Pago con Ficha</a>
+                  </h3>
+                  <div class="collapse" id="pagoFicha">
+                    <div class="py-2 pl-0">
+                      <p class="mb-0">
+                        Ingrese la ficha de pago.
+                      </p>
+                      <input type="file" class="form-control" name="imagen" value="">
+                    </div>
+                  </div>
+                </div>
+                <div class="border mb-3 p-3 rounded">
+                  <h3 class="h6 mb-0">
+                    <a class="d-block" data-toggle="collapse" href="#datosTransferencia" role="button" aria-expanded="false" aria-controls="datosTransferencia">Datos para Transferencia</a>
+                  </h3>
+                  <div class="collapse" id="datosTransferencia">
+                    <div class="py-2 pl-0">
+                      <p class="mb-0">
+                        Datos para Transferencia
+                      </p>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group">
-                  <button class="btn btn-primary btn-lg btn-block" type="button" name="button">Comprar</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" name="button">Comprar</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      </form>
     </div>
   </div>
 
@@ -118,8 +152,12 @@
     var nombre = $(this).val();
     if (nombre == "Ciudad de México") {
       $("#envios").text("$ 70.00");
+      $("#precio").text('$ '+{{$total + 70}}+'.00');
+      $("#env").val(70);
     }else {
       $("#envios").text("$ 175.00");
+      $("#precio").text('$ '+{{$total + 175}}+'.00');
+      $("#env").val(175);
     }
   });
 
