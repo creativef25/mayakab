@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Stripe;
 
 class TiendaController extends Controller
 {
@@ -92,7 +93,15 @@ class TiendaController extends Controller
 
     if (empty($re->file('imagen'))) {
       $pago = "tarjeta";
-      dd($tien);
+      Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+      $cart = Stripe\Charge::create ([
+                "amount" => $re->total,
+                "currency" => "mxn",
+                "source" => $re->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com."
+        ]);
+
+        //Falta Procesamiento
     }else {
       $pago = "deposito";
       $archivo = $re->file('imagen');
